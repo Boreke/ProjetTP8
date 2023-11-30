@@ -8,8 +8,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
@@ -21,7 +24,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         /*FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);*/
-        exercice3(stage);
+        exercice4(stage);
         stage.show();
     }
 
@@ -186,6 +189,22 @@ public class HelloApplication extends Application {
         return stage;
     }
     private static Stage exercice4(Stage stage) {
+        GridPane gridPane = new GridPane();
 
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 8; col++) {
+                Rectangle square = new Rectangle(50, 50,
+                        (row + col) % 2 == 0 ? Color.BLACK : Color.WHITE);
+
+                gridPane.add(square, col, row);
+            }
+        }
+
+        Scene scene = new Scene(gridPane, 400, 400);
+
+        stage.setTitle("Echiquier");
+        stage.setScene(scene);
+
+        return stage;
     }
 }
